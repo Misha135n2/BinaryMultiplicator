@@ -38,13 +38,13 @@ namespace BinaryMultiplicator
                 // 01
                 if (!higher && lesser)
                 {
-                    spp = Binary.BitwiseAdd(spp, b);
+                    spp = Binary.Add(spp, b);
                     op = "+b;";
                 }
                 // 10
                 if (higher && !lesser)
                 {
-                    spp = Binary.BitwiseAdd(spp, Binary.InvertSign(b));
+                    spp = Binary.Add(spp, Binary.InvertSign(b));
                     op = "-b;";
                 }
                 

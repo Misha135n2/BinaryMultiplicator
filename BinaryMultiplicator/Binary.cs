@@ -33,11 +33,11 @@
             if (binary[0] == '0')
             {
                 result = Invert(binary);
-                result = BitwiseAdd(result, GetOneFor(binary.Length));
+                result = Add(result, GetOneFor(binary.Length));
             }
             else
             {
-                result = BitwiseAdd(binary, GetMinusOneFor(binary.Length));
+                result = Add(binary, GetMinusOneFor(binary.Length));
                 result = Invert(result);
             }
 
@@ -60,7 +60,7 @@
             return saved;
         }
 
-        public static string BitwiseAdd(string a, string b)
+        public static string Add(string a, string b)
         {
             char[] res = new char[a.Length];
             for (int i = 0; i < res.Length; i++)

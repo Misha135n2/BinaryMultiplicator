@@ -33,7 +33,7 @@ namespace BinaryMultiplicator
                 bool add = a[a.Length - 1] == '1';
 
                 if (add)
-                    spp = Binary.BitwiseAdd(spp, b);
+                    spp = Binary.Add(spp, b);
 
                 b = Binary.MoveBitwiseLeft(b, false);
                     
@@ -47,7 +47,7 @@ namespace BinaryMultiplicator
                     if (needCorrection)
                     {
                         Console.WriteLine("----------------------");
-                        spp = Binary.BitwiseAdd(spp, Binary.InvertSign(b));
+                        spp = Binary.Add(spp, Binary.InvertSign(b));
                         Console.WriteLine($"c|a:{a}|b:{b}|spp:{spp}|correction -b;result;");
                     }
                     Console.WriteLine("----------------------");
