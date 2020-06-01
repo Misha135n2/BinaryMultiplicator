@@ -81,6 +81,26 @@ namespace BinaryMultiplicator
                 Function = () => CalculateBy(MultiplicationMethod2xIV.Singleton),
                 ToolTip = "2x Multiplication IV"
             });
+            Functions.Add(ConsoleKey.T, new FunctionInfo()
+            {
+                Function = () => CalculateBy(MultiplicationMethod3xI.Singleton),
+                ToolTip = "3x Multiplication I"
+            });
+            Functions.Add(ConsoleKey.Y, new FunctionInfo()
+            {
+                Function = () => CalculateBy(MultiplicationMethod3xII.Singleton),
+                ToolTip = "3x Multiplication II"
+            });
+            Functions.Add(ConsoleKey.U, new FunctionInfo()
+            {
+                Function = () => CalculateBy(MultiplicationMethod3xIII.Singleton),
+                ToolTip = "3x Multiplication III"
+            });
+            Functions.Add(ConsoleKey.I, new FunctionInfo()
+            {
+                Function = () => CalculateBy(MultiplicationMethod3xIV.Singleton),
+                ToolTip = "3x Multiplication IV"
+            });
 
             string WaitForBinary()
             {

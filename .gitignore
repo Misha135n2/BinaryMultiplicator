@@ -134,3 +134,4 @@ _NCrunch*
 *.ide-wal
 *.lock
 *.ide
+*.ide-shm

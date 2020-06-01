@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="Binary.cs" />
     <Compile Include="IMultiplicationMethod.cs" />
+    <Compile Include="MultiplicationMethod3xI.cs" />
+    <Compile Include="MultiplicationMethod3xII.cs" />
+    <Compile Include="MultiplicationMethod3xIII.cs" />
     <Compile Include="MultiplicationMethod2xIII.cs" />
+    <Compile Include="MultiplicationMethod3xIV.cs" />
     <Compile Include="MultiplicationMethod2xIV.cs" />
     <Compile Include="MultiplicationMethod2xII.cs" />
     <Compile Include="MultiplicationMethod2xI.cs" />

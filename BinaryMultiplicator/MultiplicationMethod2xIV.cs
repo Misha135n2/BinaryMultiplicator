@@ -7,7 +7,7 @@ namespace BinaryMultiplicator
         private MultiplicationMethod2xIV() {}
         public static MultiplicationMethod2xIV Singleton { get; } = new MultiplicationMethod2xIV();
 
- public void Calculate(string a, string b)
+    public void Calculate(string a, string b)
         {
             if (a.Length % 2 != 0)
             {
@@ -32,7 +32,7 @@ namespace BinaryMultiplicator
             }
             
             Console.WriteLine("----------------------");
-            Console.WriteLine($"0|a:{a.Substring(0, 2)}.{a.Substring(2, asrc.Length)}|.|b:{b.Substring(0, 2)}.{b.Substring(2, bsrc.Length)}.{b.Substring(2 + bsrc.Length, bsrc.Length)}|spp:{spp.Substring(0, 2)}.{spp.Substring(2, bsrc.Length)}.{spp.Substring(2 + bsrc.Length, bsrc.Length)}|input");
+            Console.WriteLine($"0|a:{a.Substring(0, 2)}.{a.Substring(2, asrc.Length)}|b:{b.Substring(0, 2)}.{b.Substring(2, bsrc.Length)}.{b.Substring(2 + bsrc.Length, bsrc.Length)}|spp:{spp.Substring(0, 2)}.{spp.Substring(2, bsrc.Length)}.{spp.Substring(2 + bsrc.Length, bsrc.Length)}|input");
             Console.WriteLine("----------------------");
             
             for (int i = 0; i < a.Length - 1; i += 2)
@@ -85,7 +85,7 @@ namespace BinaryMultiplicator
                 bool eoc = i == a.Length - 2;
                 string cycle = eoc ? "result;" : "move a, spp;";
                     
-                Console.WriteLine($"{i / 2 + 1}|a:{a.Substring(0, 2)}.{a.Substring(2, asrc.Length)}|{(p ? "1" : "0")}|b:{b.Substring(0, 2)}.{b.Substring(2, bsrc.Length)}.{b.Substring(2 + bsrc.Length, bsrc.Length)}|spp:{spp.Substring(0, 2)}.{spp.Substring(2, bsrc.Length)}.{spp.Substring(2 + bsrc.Length, bsrc.Length)}|{op}{cycle}");
+                Console.WriteLine($"{i / 2 + 1}|a:{a.Substring(0, 2)}.{a.Substring(2, asrc.Length)}|b:{b.Substring(0, 2)}.{b.Substring(2, bsrc.Length)}.{b.Substring(2 + bsrc.Length, bsrc.Length)}|spp:{spp.Substring(0, 2)}.{spp.Substring(2, bsrc.Length)}.{spp.Substring(2 + bsrc.Length, bsrc.Length)}|{op}{cycle}");
                 
                 a = Binary.MoveBitwiseLeft(Binary.MoveBitwiseLeft(a, false), false);
                 b = Binary.MoveBitwiseRight(Binary.MoveBitwiseRight(b, b[0] == '1'), b[0] == '1');
