@@ -1,4 +1,6 @@
-﻿namespace BinaryMultiplicator
+﻿using System;
+
+namespace BinaryMultiplicator
 {
     public static class Binary
     {
@@ -110,5 +112,42 @@
             }
             return true;
         }
+
+        public static string Pattern(string binary, string pattern, char placeholder = '*')
+        {
+            char[] r = new char[pattern.Length];
+            int n = 0;
+            for (int i = 0; i < pattern.Length; i++)
+            {
+                if (pattern[i] == placeholder)
+                {
+                    r[i] = binary[n];
+                    n++;
+                }
+                else
+                    r[i] = pattern[i];
+            }
+            return new string(r);
+        }
+
+        public static string AlignFor(string binary, int n, bool isTwo = true, bool extraExtend = false)
+        {
+            char flr = isTwo ? (binary[0]) : '0';
+            int algn = binary.Length % n;
+            algn = (algn == 0 && extraExtend) ? n : algn;
+            for (int i = 0; i < algn; i++)
+                binary = $"{flr}{binary}";
+            return binary;
+        }
+
+        //public static int ToInt(string binary, bool isTwo = true)
+        //{
+        //    bool minus = (isTwo && binary[0] == '1');
+        //    binary = minus ? InvertSign(binary) : binary;
+        //    int r = 0;
+        //    for (int i = 0; i < binary.Length; i++)
+        //        r += binary[i] == '1' ? ((int) Math.Pow(2, binary.Length - 1 - i)) : 0;
+        //    return minus ? -r : r;
+        //}
     }
 }

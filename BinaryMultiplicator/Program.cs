@@ -5,6 +5,19 @@ namespace BinaryMultiplicator
 {
     public class Program
     {
+#if DEBUG
+        // 152*237
+        private static readonly string[] _test = new[]
+        {
+            "010011000", "011101101", // pp
+            "010011000", "100010011", // pn
+            "101101000", "011101101", // np
+            "101101000", "100010011"  // nn
+        };
+        // +r 001000110 010111000
+        // -r 110111001 101001000
+#endif
+
         public class FunctionInfo
         {
             public Action Function;
@@ -115,10 +128,13 @@ namespace BinaryMultiplicator
 
             void CalculateBy(IMultiplicationMethod method)
             {
+#if DEBUG
+                for (int i = 0; i < _test.Length; i += 2)
+                    method.Calculate(_test[i], _test[i + 1]);
+#else
                 Console.WriteLine("Enter a and b values.");
                 string a = WaitForBinary();
                 string b = WaitForBinary();
-
                 if (a.Length != b.Length)
                 {
                     Console.WriteLine("Values must have identical word length.");
@@ -126,6 +142,7 @@ namespace BinaryMultiplicator
                 }
 
                 method.Calculate(a, b);
+#endif
             }
         }
 
@@ -140,6 +157,36 @@ namespace BinaryMultiplicator
         private static void Main(string[] args)
         {
             RegisterFunctions();
+ #if DEBUG
+            ConsoleKey[] keys =
+            {
+                //ConsoleKey.F5,
+                //ConsoleKey.Q,
+                //ConsoleKey.T,
+
+                ConsoleKey.F6,
+                ConsoleKey.W,
+                ConsoleKey.Y,
+                
+                //ConsoleKey.F7,
+                //ConsoleKey.E,
+                //ConsoleKey.U,
+
+                //ConsoleKey.F8,
+                //ConsoleKey.R,
+                //ConsoleKey.I,
+            };
+
+            foreach (var k in keys)
+            {
+                var fi = Functions[k];
+                Console.WriteLine($"================={fi.ToolTip}=================");
+                fi.Function();
+                Console.WriteLine("==================================");
+            }
+            
+            Console.ReadKey();
+#else
             Help();
             while (true)
             {
@@ -164,6 +211,7 @@ namespace BinaryMultiplicator
                 fi.Function();
                 Console.WriteLine("==================================");
             }
+#endif
         }
     }
 }
