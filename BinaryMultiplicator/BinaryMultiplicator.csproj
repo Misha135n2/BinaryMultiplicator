@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="Binary.cs" />
     <Compile Include="BinaryWord.cs" />
+    <Compile Include="DivisionMethodNRI.cs" />
+    <Compile Include="DivisionMethodDCRI.cs" />
+    <Compile Include="IDivisionMethod.cs" />
     <Compile Include="IMultiplicationMethod.cs" />
     <Compile Include="MultiplicationMethodIV.cs" />
     <Compile Include="MultiplicationMethodIII.cs" />

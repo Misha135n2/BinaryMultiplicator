@@ -140,14 +140,47 @@ namespace BinaryMultiplicator
             return binary;
         }
 
-        //public static int ToInt(string binary, bool isTwo = true)
-        //{
-        //    bool minus = (isTwo && binary[0] == '1');
-        //    binary = minus ? InvertSign(binary) : binary;
-        //    int r = 0;
-        //    for (int i = 0; i < binary.Length; i++)
-        //        r += binary[i] == '1' ? ((int) Math.Pow(2, binary.Length - 1 - i)) : 0;
-        //    return minus ? -r : r;
-        //}
+        public static string Extend(string a, int n, bool isTwo = true)
+        {
+            if (a.Length < n)
+            {
+                char flr = isTwo ? a[0] : '0';
+                while (a.Length < n)
+                    a += flr;
+                return a;
+            }
+            throw new InvalidOperationException();
+        }
+
+        public static bool Equality(string a, string b, bool isTwo = true)
+        {
+            if (a.Length != b.Length)
+            {
+                if (a.Length > b.Length)
+                    b = Extend(b, a.Length);
+                else
+                    a = Extend(a, b.Length);
+            }
+
+            a = $"{(isTwo ? a[0] : '0')}{a}";
+            b = $"{(isTwo ? b[0] : '0')}{b}";
+
+            a = Binary.Add(a, InvertSign(b));
+
+            return a == (new BinaryWord(a.Length).Value);
+        }
+        public static int ToInt(string binary, bool isTwo = true)
+        {
+            bool minus = (isTwo && binary[0] == '1');
+            binary = minus ? InvertSign(binary) : binary;
+            int r = 0;
+            int pot = 1;
+            for (int i = binary.Length - 1; i >= 0; i--)
+            {
+                r += binary[i] == '1' ? pot : 0;
+                pot *= 2;
+            }
+            return minus ? -r : r;
+        }
     }
 }

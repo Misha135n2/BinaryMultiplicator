@@ -5,7 +5,7 @@ namespace BinaryMultiplicator
 {
     public class Program
     {
-#if DEBUG
+#if AUTOTEST
         // 152*237
         private static readonly string[] _test = new[]
         {
@@ -115,6 +115,18 @@ namespace BinaryMultiplicator
                 ToolTip = "3x Multiplication IV"
             });
 
+            Functions.Add(ConsoleKey.A, new FunctionInfo()
+            {
+                Function = () => { DivideBy(DivisionMethodDCRI.Singleton); },
+                ToolTip = "Division with Restoration I (Direct Code)"
+            });
+
+            Functions.Add(ConsoleKey.D, new FunctionInfo()
+            {
+                Function = () => { DivideBy(DivisionMethodNRI.Singleton); },
+                ToolTip = "Division No Restoration I"
+            });
+
             string WaitForBinary()
             {
                 string str = Console.ReadLine();
@@ -126,9 +138,16 @@ namespace BinaryMultiplicator
                 return str;
             }
 
+            void DivideBy(IDivisionMethod method)
+            {
+                string a = WaitForBinary();
+                string b = WaitForBinary();
+
+                method.Divide(a, b);
+            }
             void CalculateBy(IMultiplicationMethod method)
             {
-#if DEBUG
+#if AUTOTEST
                 for (int i = 0; i < _test.Length; i += 2)
                     method.Calculate(_test[i], _test[i + 1]);
 #else
@@ -157,7 +176,7 @@ namespace BinaryMultiplicator
         private static void Main(string[] args)
         {
             RegisterFunctions();
- #if DEBUG
+ #if AUTOTEST
             ConsoleKey[] keys =
             {
                 //ConsoleKey.F5,

@@ -49,5 +49,8 @@
         {
             Value = Binary.AlignFor(_value, n);
         }
+
+        public string Pattern(string pattern, char placeholder = '*') => Binary.Pattern(_value, pattern, placeholder);
+
     }
 }
